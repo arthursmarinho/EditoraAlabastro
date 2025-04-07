@@ -45,33 +45,27 @@ export default function Home() {
 
   return (
     <div>
-      <div className="w-full h-screen relative">
-        <Image
-          src="/Banner.png"
-          alt="Banner"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
-        />
+      <div className="w-full h-[750px] relative">
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
           <h1 className="text-3xl transition-all hover:bg-black hover:text-white duration-700 ease-in-out hover:text-7xl sm:text-4xl md:text-6xl text-center font-extrabold rounded-4xl bg-white text-black py-10 px-16">
             Qual será a sua próxima aventura?
           </h1>
-          <Link href="/about">
-            <Button className="mt-6 px-6 hover:px-10 hover:py-6 text-lg bg-white text-black  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all duration-300">
-              Explore agora
-            </Button>
-          </Link>
-          <Link href="#livros">
-            <Button className="mt-6 px-6 hover:px-10 hover:py-6 text-lg bg-white text-black  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all duration-300">
-              Ver livros
-            </Button>
-          </Link>
+          <div className="flex flex-row gap-4">
+            <Link href="/about">
+              <Button className="mt-6 px-12 hover:px-10 hover:py-6 text-lg  text-white  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all  duration-700 ease-in-out">
+                Compre Agora
+              </Button>
+            </Link>
+            <Link href="#livros">
+              <Button className="mt-6 px-12 hover:px-10 hover:py-6 text-lg bg-white text-black  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all duration-700 ease-in-out">
+                Ver Livros
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6 pt-[350px]">
+      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6">
         <AnimatePresence>
           {cont.map((faq, index) => (
             <motion.div
@@ -128,7 +122,7 @@ export default function Home() {
                 className="rounded-lg object-cover"
                 priority
               />
-              <h2 className="text-center text-[#050A46] text-sm font-semibold">
+              <h2 className="text-center text-[#050A46] text-sm font-semibold pb-40">
                 {book.titulo}
               </h2>
             </motion.div>

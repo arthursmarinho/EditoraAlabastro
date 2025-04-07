@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import {Button} from "./ui/button";
 
 export default function Header() {
   return (
@@ -8,7 +9,7 @@ export default function Header() {
         <Image src="/EditoraImagem.png" alt="Logo" width={60} height={60} />
       </Link>
 
-      <nav className="flex gap-4 font-semibold text-sm sm:text-base">
+      <nav className="flex gap-4 font-semibold text-sm sm:text-base items-center">
         <Link href="/sobre" className="hover:text-amber-500">
           Sobre
         </Link>
@@ -17,6 +18,9 @@ export default function Header() {
         </Link>
         <Link href="/contato" className="hover:text-amber-500">
           Contato
+        </Link>
+        <Link href="/login">
+          <Button>Login</Button>
         </Link>
       </nav>
     </header>
