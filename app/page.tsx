@@ -53,7 +53,7 @@ export default function Home() {
           quality={100}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl text-center font-extrabold text-amber-100 drop-shadow-lg">
+          <h1 className="text-3xl transition-all hover:bg-black hover:text-white duration-700 ease-in-out hover:text-7xl sm:text-4xl md:text-6xl text-center font-extrabold rounded-4xl bg-white text-black py-10 px-16">
             Qual será a sua próxima aventura?
           </h1>
         </div>
