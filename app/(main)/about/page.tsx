@@ -23,7 +23,6 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#050A46]">
-      {/* Banner principal */}
       <div className="relative w-full h-[60vh]">
         <div className="absolute inset-0  bg-opacity-50 flex items-center justify-center">
           <h1 className="text-4xl md:text-6xl text-black font-extrabold text-center">
@@ -32,7 +31,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Texto de introdução */}
       <section className="max-w-5xl mx-auto px-6 py-16 text-center">
         <motion.h2
           className="text-3xl font-bold mb-6"
@@ -55,7 +53,6 @@ export default function AboutPage() {
         </motion.p>
       </section>
 
-      {/* Equipe */}
       <section className="bg-[#F9FAFB] py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl font-bold text-center mb-12">Nossa Equipe</h2>
@@ -84,7 +81,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Missão e Visão */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 gap-12">
           <motion.div
