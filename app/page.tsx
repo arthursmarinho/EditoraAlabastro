@@ -2,6 +2,8 @@
 import {useEffect, useState} from "react";
 import Image from "next/image";
 import {motion, AnimatePresence} from "framer-motion";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 interface Book {
   imagem: string;
@@ -56,6 +58,16 @@ export default function Home() {
           <h1 className="text-3xl transition-all hover:bg-black hover:text-white duration-700 ease-in-out hover:text-7xl sm:text-4xl md:text-6xl text-center font-extrabold rounded-4xl bg-white text-black py-10 px-16">
             Qual será a sua próxima aventura?
           </h1>
+          <Link href="/about">
+            <Button className="mt-6 px-6 hover:px-10 hover:py-6 text-lg bg-white text-black  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all duration-300">
+              Explore agora
+            </Button>
+          </Link>
+          <Link href="#livros">
+            <Button className="mt-6 px-6 hover:px-10 hover:py-6 text-lg bg-white text-black  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all duration-300">
+              Ver livros
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -89,7 +101,7 @@ export default function Home() {
         </AnimatePresence>
       </div>
 
-      <div className="flex flex-col justify-start p-12 pt-[300px]">
+      <div className="flex flex-col justify-start p-12 pt-[300px]" id="livros">
         <h1 className="text-6xl font-bold text-[#050A46]">
           Os Melhores Livros
         </h1>
