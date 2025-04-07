@@ -1,22 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="fixed top-0 w-full h-20 bg-white text-black z-50 shadow-md flex flex-row items-center justify-between px-12">
+    <header className="fixed top-0 w-full h-20 bg-white text-black z-50 shadow-md flex items-center justify-between px-4 sm:px-8">
       <Link href="/">
-        <Image
-          src="/EditoraImagem.png"
-          alt="Gilbert's Logo"
-          width={75}
-          height={75}
-        />
+        <Image src="/EditoraImagem.png" alt="Logo" width={60} height={60} />
       </Link>
-      <div className="flex gap-4 font-semibold text-lg">
-        <Link href="/sobre">Sobre</Link>
-        <Link href="/sobre">Livros</Link>
-        <Link href="/sobre">Contato</Link>
-      </div>
-    </div>
+
+      <nav className="flex gap-4 font-semibold text-sm sm:text-base">
+        <Link href="/sobre" className="hover:text-amber-500">
+          Sobre
+        </Link>
+        <Link href="/livros" className="hover:text-amber-500">
+          Livros
+        </Link>
+        <Link href="/contato" className="hover:text-amber-500">
+          Contato
+        </Link>
+      </nav>
+    </header>
   );
 }

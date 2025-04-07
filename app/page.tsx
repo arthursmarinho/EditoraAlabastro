@@ -46,55 +46,56 @@ export default function Home() {
           priority
           quality={100}
         />
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center space-y-6">
-          <h1 className="text-amber-100 text-6xl font-extrabold drop-shadow-lg text-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl text-center font-extrabold text-amber-100 drop-shadow-lg">
             Qual será a sua próxima aventura?
           </h1>
         </div>
       </div>
-      <div className="flex flex-row pt-12">
+      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6 pt-[350px]">
         {cont.map((faq, index) => (
-          <div key={index} className="flex w-2/3 p-4">
-            <div className="bg-white shadow-2xl rounded-4xl p-12 flex items-center gap-4">
-              <div className="relative w-24 h-24 flex-shrink-0">
-                <Image
-                  src={imagens[index]}
-                  alt={`Imagem ${index + 1}`}
-                  fill
-                  className="object-cover"
-                  priority
-                  quality={100}
-                />
-              </div>
-
-              <div>
-                <h2 className="text-xl font-bold mb-2">{faq.question}</h2>
-                <p>{faq.answer}</p>
-              </div>
+          <div
+            key={index}
+            className="w-full sm:w-[90%] md:w-[45%] lg:w-[30%] bg-white shadow-2xl rounded-2xl p-12 flex gap-4"
+          >
+            <div className="relative w-16 h-16 flex-shrink-0">
+              <Image
+                src={imagens[index]}
+                alt={`Imagem ${index + 1}`}
+                fill
+                className="object-cover rounded-md"
+                priority
+              />
+            </div>
+            <div>
+              <h2 className="text-lg font-bold">{faq.question}</h2>
+              <p className="text-sm">{faq.answer}</p>
             </div>
           </div>
         ))}
       </div>
+
       <div className="flex flex-col justify-start p-12 pt-[300px]">
         <h1 className="text-6xl font-bold text-[#050A46]">
           Os Melhores Livros
         </h1>
         <p className="text-xs">By Gilbert Zangerolame</p>
       </div>
-      <div className="flex flex-row space-x-12 justify-evenly pt-20 px-12">
+      <div className="flex flex-wrap justify-center gap-8 px-6 pt-16">
         {books.map((book: any, index: number) => (
-          <div key={index} className="flex flex-col items-start gap-4">
+          <div
+            key={index}
+            className="w-40 sm:w-48 flex flex-col items-center gap-2"
+          >
             <Image
               src={book.imagem}
               alt={`Imagem do livro ${book.titulo}`}
-              width={200}
-              height={200}
+              width={180}
+              height={250}
               className="rounded-lg object-cover"
               priority
-              quality={100}
             />
-            <h2 className="text-xl font-medium text-[#050A46]">
+            <h2 className="text-center text-[#050A46] text-sm font-semibold">
               {book.titulo}
             </h2>
           </div>
