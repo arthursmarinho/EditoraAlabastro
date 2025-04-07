@@ -10,7 +10,7 @@ export default function Header() {
       </Link>
 
       <nav className="flex gap-4 font-semibold text-sm sm:text-base items-center">
-        <Link href="/sobre" className="hover:text-amber-500">
+        <Link href="/about" className="hover:text-amber-500">
           Sobre
         </Link>
         <Link href="/livros" className="hover:text-amber-500">
