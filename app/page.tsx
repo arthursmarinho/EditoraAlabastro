@@ -1,4 +1,5 @@
 "use client";
+
 import {useEffect, useState} from "react";
 import Image from "next/image";
 import {motion, AnimatePresence} from "framer-motion";
@@ -6,6 +7,7 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 
 interface Book {
+  id: number;
   imagem: string;
   titulo: string;
 }
@@ -52,12 +54,12 @@ export default function Home() {
           </h1>
           <div className="flex flex-row gap-4">
             <Link href="/about">
-              <Button className="mt-6 px-12 hover:px-10 hover:py-6 text-lg  text-white  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all  duration-700 ease-in-out">
+              <Button className="mt-6 px-12 py-6 hover:px-10 hover:py-8 text-lg  text-white  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all  duration-700 ease-in-out">
                 Compre Agora
               </Button>
             </Link>
             <Link href="#livros">
-              <Button className="mt-6 px-12 hover:px-10 hover:py-6 text-lg bg-white text-black  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all duration-700 ease-in-out">
+              <Button className="mt-6 py-6 px-12 hover:px-10 hover:py-8 text-lg bg-white text-black  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all duration-700 ease-in-out">
                 Ver Livros
               </Button>
             </Link>
@@ -105,27 +107,29 @@ export default function Home() {
       <div className="flex flex-wrap justify-center gap-8 px-6 pt-16">
         <AnimatePresence>
           {books.map((book, index) => (
-            <motion.div
-              key={index}
-              className="w-40 sm:w-48 flex flex-col items-center gap-2"
-              initial={{opacity: 0, y: 20}}
-              animate={{opacity: 1, y: 0}}
-              exit={{opacity: 0, y: -20}}
-              transition={{delay: index * 0.1, duration: 0.5}}
-              whileHover={{scale: 1.05}}
-            >
-              <Image
-                src={book.imagem}
-                alt={`Imagem do livro ${book.titulo}`}
-                width={180}
-                height={250}
-                className="rounded-lg object-cover"
-                priority
-              />
-              <h2 className="text-center text-[#050A46] text-sm font-semibold pb-40">
-                {book.titulo}
-              </h2>
-            </motion.div>
+            <Link href={`/books/${book.id}`} key={book.id}>
+              <motion.div
+                key={index}
+                className="w-40 sm:w-48 flex flex-col items-center gap-2"
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                exit={{opacity: 0, y: -20}}
+                transition={{delay: index * 0.1, duration: 0.5}}
+                whileHover={{scale: 1.05}}
+              >
+                <Image
+                  src={book.imagem}
+                  alt={`Imagem do livro ${book.titulo}`}
+                  width={180}
+                  height={250}
+                  className="rounded-lg object-cover"
+                  priority
+                />
+                <h2 className="text-center text-[#050A46] text-sm font-semibold pb-40">
+                  {book.titulo}
+                </h2>
+              </motion.div>
+            </Link>
           ))}
         </AnimatePresence>
       </div>
