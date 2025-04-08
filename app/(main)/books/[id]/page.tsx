@@ -34,8 +34,6 @@ export default function BookPage({params}: PageProps) {
     notFound();
   }
 
-  console.log(book.titulo);
-
   return (
     <div className="pt-[88px] px-6 sm:px-12 bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white rounded-3xl shadow-2xl flex flex-col sm:flex-row overflow-hidden max-w-7xl w-full">
@@ -62,8 +60,14 @@ export default function BookPage({params}: PageProps) {
             </p>
           </div>
 
+          {/* Preço fictício */}
+          <div className="text-4xl font-bold text-[#0f172a] bg-gray-200 px-6 py-3 rounded-xl w-fit shadow-sm">
+            R$ 00,00
+          </div>
+
+          {/* Botões */}
           <div className="flex flex-wrap gap-4">
-            <Button className="text-lg px-6 py-4 flex items-center gap-2">
+            <Button className="text-lg px-6 py-4 flex items-center gap-2 bg-black hover:bg-zinc-800">
               <ShoppingCart className="w-5 h-5" /> Comprar agora
             </Button>
             <Button
