@@ -18,9 +18,21 @@ interface PageProps {
 }
 
 async function getBooks(): Promise<Book[]> {
-  const res = await fetch("/api/books", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_VERCEL_URL
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+        : "http://localhost:3000"
+    }/api/books`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Erro ao buscar livros");
+  }
+
   return res.json();
 }
 
