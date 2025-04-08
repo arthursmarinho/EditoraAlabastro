@@ -18,16 +18,11 @@ interface PageProps {
 }
 
 async function getBooks(): Promise<Book[]> {
-  const res = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_VERCEL_URL
-        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-        : "http://localhost:3000"
-    }/api/books`,
-    {
-      cache: "no-store",
-    }
-  );
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/books`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Erro ao buscar livros");
@@ -37,8 +32,7 @@ async function getBooks(): Promise<Book[]> {
 }
 
 export default function BookPage({params}: PageProps) {
-  const {id} = use(params); // ⬅️ agora é assim!
-
+  const {id} = use(params);
   const books = use(getBooks());
   const book = books.find((b) => b.id.toString() === id);
 
@@ -72,12 +66,10 @@ export default function BookPage({params}: PageProps) {
             </p>
           </div>
 
-          {/* Preço fictício */}
           <div className="text-4xl font-bold text-[#0f172a] bg-gray-200 px-6 py-3 rounded-xl w-fit shadow-sm">
             R$ 00,00
           </div>
 
-          {/* Botões */}
           <div className="flex flex-wrap gap-4">
             <Button className="text-lg px-6 py-4 flex items-center gap-2 bg-black hover:bg-zinc-800">
               <ShoppingCart className="w-5 h-5" /> Comprar agora
