@@ -47,6 +47,7 @@ export default function BookPage({params}: PageProps) {
             width={700}
             height={700}
             className="w-full h-full object-cover shadow-xl"
+            quality={100}
           />
         </div>
 
@@ -81,8 +82,7 @@ export default function BookPage({params}: PageProps) {
 
           <div className="pt-6">
             <p className="text-gray-500 text-base sm:text-lg">
-              Publicado pela Editora Alabastro — edição especial com capa dura e
-              conteúdo exclusivo.
+              Publicado pela Editora Alabastro
             </p>
           </div>
         </div>
