@@ -18,7 +18,7 @@ interface PageProps {
 }
 
 async function getBooks(): Promise<Book[]> {
-  const res = await fetch("http://localhost:3000/api/books", {
+  const res = await fetch("/api/books", {
     cache: "no-store",
   });
   return res.json();
