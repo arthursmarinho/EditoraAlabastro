@@ -106,22 +106,25 @@ export default function Home() {
         </h1>
         <p className="text-xs">By Gilbert Zangerolame</p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center group">
         {livros.map((livro, index) => (
           <div
             key={index}
-            className="border rounded-lg shadow p-4 bg-white hover:shadow-md transition"
+            className="bg-white border border-gray-200 rounded-2xl shadow-sm w-80 p-5 transition-all duration-300 ease-in-out
+                   group-hover:opacity-40 hover:!opacity-100 hover:scale-105"
           >
             <img
               src={livro.imagem}
               alt={livro.titulo}
-              className="w-full h-48 object-cover rounded mb-2"
+              className="w-full h-[500px] object-cover rounded-xl mb-4"
             />
-            <h2 className="text-xl font-semibold">{livro.titulo}</h2>
-            <p className="text-gray-700">{livro.descricao}</p>
-            <p className="text-sm text-gray-500 mt-2">
-              Páginas: {livro.paginas}
-            </p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-1">
+              {livro.titulo}
+            </h2>
+            <span className="text-sm text-blue-600 font-medium">
+              Editora Alabastro
+            </span>
           </div>
         ))}
       </div>

@@ -89,22 +89,6 @@ export default function FormularioLivro() {
       />
 
       <Input
-        type="file"
-        name="imagem"
-        accept="image/*"
-        onChange={handleChange}
-        required
-      />
-
-      {previewUrl && (
-        <img
-          src={previewUrl}
-          alt="Preview da imagem"
-          className="w-24 h-24 rounded shadow"
-        />
-      )}
-
-      <Input
         type="number"
         name="paginas"
         placeholder="Quantidade de páginas"

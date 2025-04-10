@@ -30,7 +30,8 @@ export default function Header() {
           Contato
         </Link>
         {user &&
-          user.emailAddresses[0].emailAddress === "xuxeco9@gmail.com" && (
+          user.emailAddresses[0].emailAddress ===
+            process.env.NEXT_PUBLIC_ADMIN_EMAIL && (
             <Link href="/addbook">
               <Button>Adicionar livros</Button>
             </Link>
