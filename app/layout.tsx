@@ -26,7 +26,7 @@ export default function RootLayout({
     <ClerkProvider localization={ptBR}>
       <html lang="pt-BR">
         <body className={inter.className}>
-          <Header />
+          {/* <Header /> */}
           {children}
           <Toaster position="bottom-right" />
           <Footer />

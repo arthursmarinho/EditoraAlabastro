@@ -8,12 +8,12 @@ import Link from "next/link";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "@/lib/firebase";
 
-interface Livro {
+type Livro = {
+  id: string;
   titulo: string;
-  descricao: string;
   imagem: string;
-  paginas: number;
-}
+};
+
 export default function Home() {
   const [livros, setLivros] = useState<Livro[]>([]);
 
@@ -22,7 +22,10 @@ export default function Home() {
       const livrosRef = collection(db, "books");
       const snapshot = await getDocs(livrosRef);
 
-      const lista: Livro[] = snapshot.docs.map((doc) => doc.data() as Livro);
+      const lista: Livro[] = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Livro[];
       setLivros(lista);
     }
 
@@ -109,23 +112,25 @@ export default function Home() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center group">
         {livros.map((livro, index) => (
-          <div
-            key={index}
-            className="bg-white border border-gray-200 rounded-2xl shadow-sm w-80 p-5 transition-all duration-300 ease-in-out
+          <Link key={livro.id} href={`/books/${livro.id}`}>
+            <div
+              key={index}
+              className="bg-white border border-gray-200 rounded-2xl shadow-sm w-80 p-5 transition-all duration-300 ease-in-out
                    group-hover:opacity-40 hover:!opacity-100 hover:scale-105"
-          >
-            <img
-              src={livro.imagem}
-              alt={livro.titulo}
-              className="w-full h-[500px] object-cover rounded-xl mb-4"
-            />
-            <h2 className="text-xl font-semibold text-gray-900 mb-1">
-              {livro.titulo}
-            </h2>
-            <span className="text-sm text-blue-600 font-medium">
-              Editora Alabastro
-            </span>
-          </div>
+            >
+              <img
+                src={livro.imagem}
+                alt={livro.titulo}
+                className="w-full h-[500px] object-cover rounded-xl mb-4"
+              />
+              <h2 className="text-xl font-semibold text-gray-900 mb-1">
+                {livro.titulo}
+              </h2>
+              <span className="text-sm text-blue-600 font-medium">
+                Editora Alabastro
+              </span>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
