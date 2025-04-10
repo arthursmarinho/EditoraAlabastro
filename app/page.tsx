@@ -104,7 +104,7 @@ export default function Home() {
         <h1 className="text-6xl font-bold text-[#050A46]">
           Os Melhores Livros
         </h1>
-        <p className="text-xs">By Gilbert Zangerolame</p>
+        <p className="text-xs">Por Gilbert Zangerolame</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center group">
