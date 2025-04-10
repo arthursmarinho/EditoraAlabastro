@@ -22,15 +22,21 @@ export default function Home() {
       const livrosRef = collection(db, "books");
       const snapshot = await getDocs(livrosRef);
 
-      const lista: Livro[] = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as Livro[];
+      const lista: Livro[] = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id, // garante que o ID vem do Firestore
+          titulo: data.titulo,
+          imagem: data.imagem,
+        };
+      });
+
       setLivros(lista);
     }
 
     buscarLivros();
   }, []);
+
   const imagens = ["/Girl.png", "/Books.png", "/Land.png"];
 
   const cont = [
