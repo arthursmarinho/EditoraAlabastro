@@ -10,8 +10,6 @@
 !.yarn/releases
 !.yarn/versions
 
-app/api/books/route.ts
-/lib
 
 # testing
 /coverage
