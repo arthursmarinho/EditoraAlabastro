@@ -6,7 +6,6 @@ import {Button} from "./ui/button";
 import {
   SignedIn,
   SignedOut,
-  SignIn,
   SignInButton,
   UserButton,
   useUser,
