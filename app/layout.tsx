@@ -2,9 +2,13 @@ import type {Metadata} from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {Inter} from "next/font/google";
+import {ClerkProvider} from "@clerk/nextjs";
+import {ptBR} from "@clerk/localizations";
 import "./globals.css";
+import {Toaster} from "react-hot-toast";
 
 const inter = Inter({subsets: ["latin"]});
+
 export const metadata: Metadata = {
   title: "Editora Alabastro",
   icons: {
@@ -19,12 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider localization={ptBR}>
+      <html lang="pt-BR">
+        <body className={inter.className}>
+          <Header />
+          {children}
+          <Toaster position="bottom-right" />
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

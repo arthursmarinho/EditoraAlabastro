@@ -5,28 +5,29 @@ import Image from "next/image";
 import {motion, AnimatePresence} from "framer-motion";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "@/lib/firebase";
 
-interface Book {
-  id: number;
-  imagem: string;
+interface Livro {
   titulo: string;
+  descricao: string;
+  imagem: string;
+  paginas: number;
 }
-
 export default function Home() {
-  const [books, setBooks] = useState<Book[]>([]);
+  const [livros, setLivros] = useState<Livro[]>([]);
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const res = await fetch("/api/books", {
-        cache: "no-store",
-      });
-      const data = await res.json();
-      setBooks(data);
-    };
+    async function buscarLivros() {
+      const livrosRef = collection(db, "books");
+      const snapshot = await getDocs(livrosRef);
 
-    fetchBooks();
+      const lista: Livro[] = snapshot.docs.map((doc) => doc.data() as Livro);
+      setLivros(lista);
+    }
+
+    buscarLivros();
   }, []);
-
   const imagens = ["/Girl.png", "/Books.png", "/Land.png"];
 
   const cont = [
@@ -105,35 +106,24 @@ export default function Home() {
         </h1>
         <p className="text-xs">By Gilbert Zangerolame</p>
       </div>
-
-      <div className="flex flex-wrap justify-center gap-8 px-6 pt-16">
-        <AnimatePresence>
-          {books.map((book, index) => (
-            <Link href={`/books/${book.id}`} key={book.id}>
-              <motion.div
-                key={index}
-                className="w-40 sm:w-48 flex flex-col items-center gap-2"
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                exit={{opacity: 0, y: -20}}
-                transition={{delay: index * 0.1, duration: 0.5}}
-                whileHover={{scale: 1.05}}
-              >
-                <Image
-                  src={book.imagem}
-                  alt={`Imagem do livro ${book.titulo}`}
-                  width={180}
-                  height={250}
-                  className="rounded-lg object-cover"
-                  priority
-                />
-                <h2 className="text-center text-[#050A46] text-sm font-semibold pb-40">
-                  {book.titulo}
-                </h2>
-              </motion.div>
-            </Link>
-          ))}
-        </AnimatePresence>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+        {livros.map((livro, index) => (
+          <div
+            key={index}
+            className="border rounded-lg shadow p-4 bg-white hover:shadow-md transition"
+          >
+            <img
+              src={livro.imagem}
+              alt={livro.titulo}
+              className="w-full h-48 object-cover rounded mb-2"
+            />
+            <h2 className="text-xl font-semibold">{livro.titulo}</h2>
+            <p className="text-gray-700">{livro.descricao}</p>
+            <p className="text-sm text-gray-500 mt-2">
+              Páginas: {livro.paginas}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
