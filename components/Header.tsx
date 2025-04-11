@@ -29,13 +29,9 @@ export default function Header() {
         <Link href="/contato" className="hover:text-amber-500">
           Contato
         </Link>
-        {user &&
-          user.emailAddresses[0].emailAddress ===
-            process.env.NEXT_PUBLIC_ADMIN_EMAIL && (
-            <Link href="/addbook">
-              <Button>Adicionar livros</Button>
-            </Link>
-          )}
+        <Link href="/addbook">
+          <Button>Adicionar livros</Button>
+        </Link>
         <UserButton />
         <SignedOut>
           <div className="border-2 rounded-2xl px-4 py-2 cursor-pointer hover:bg-green-400 transition-all duration-500">
