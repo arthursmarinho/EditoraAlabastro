@@ -12,7 +12,7 @@ export default async function BookPage({params}: {params: {id: string}}) {
   const docSnap = await getDoc(docRef);
 
   if (!docSnap.exists()) {
-    notFound(); // retorna página 404 do Next
+    notFound();
   }
 
   const book = docSnap.data();
