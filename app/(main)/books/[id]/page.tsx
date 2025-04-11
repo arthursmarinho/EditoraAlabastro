@@ -7,13 +7,7 @@ import {notFound} from "next/navigation";
 import {Button} from "@/components/ui/button";
 import {ShoppingCart, Bookmark, BookOpen} from "lucide-react"; // Adjust the import path if necessary
 
-interface BookPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default async function BookPage({params}: BookPageProps) {
+export default async function BookPage({params}: {params: {id: string}}) {
   const docRef = doc(db, "books", decodeURIComponent(params.id));
   const docSnap = await getDoc(docRef);
 
