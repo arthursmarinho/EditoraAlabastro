@@ -12,7 +12,6 @@ import {
 } from "@clerk/nextjs";
 
 export default function Header() {
-  const {user} = useUser();
   return (
     <header className="fixed top-0 w-full h-20 bg-white text-black z-50 shadow-md flex items-center justify-between px-4 sm:px-8">
       <Link href="/">
