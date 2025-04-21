@@ -3,13 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {Button} from "./ui/button";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
+import {SignedOut, SignInButton, UserButton, useUser} from "@clerk/nextjs";
 
 export default function Header() {
   const {user} = useUser();
@@ -38,7 +32,6 @@ export default function Header() {
         )}
 
         <UserButton />
-
         <SignedOut>
           <div className="border-2 rounded-2xl px-4 py-2 cursor-pointer hover:bg-green-400 transition-all duration-500">
             <SignInButton />

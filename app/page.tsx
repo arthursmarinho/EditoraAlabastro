@@ -65,7 +65,7 @@ export default function Home() {
             Qual será a sua próxima aventura?
           </h1>
           <div className="flex flex-row gap-4">
-            <Link href="/about">
+            <Link href="/contato">
               <Button className="mt-6 px-12 py-6 hover:px-10 hover:py-8 text-lg  text-white  hover:bg-black hover:text-white hover:text-2xl hover:p- transition-all  duration-700 ease-in-out">
                 Compre Agora
               </Button>
@@ -124,9 +124,11 @@ export default function Home() {
               className="bg-white border border-gray-200 rounded-2xl shadow-sm w-80 p-5 transition-all duration-300 ease-in-out
                    group-hover:opacity-40 hover:!opacity-100 hover:scale-105"
             >
-              <img
+              <Image
                 src={livro.imagem}
                 alt={livro.titulo}
+                width={500}
+                height={0}
                 className="w-full h-[500px] object-cover rounded-xl mb-4"
               />
               <h2 className="text-xl font-semibold text-gray-900 mb-1">
