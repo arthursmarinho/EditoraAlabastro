@@ -4,8 +4,6 @@ import {doc, getDoc} from "firebase/firestore";
 import {db} from "@/lib/firebase"; // ajuste o caminho conforme seu projeto
 import Image from "next/image";
 import {notFound} from "next/navigation";
-import {Button} from "@/components/ui/button";
-import {ShoppingCart, Bookmark, BookOpen} from "lucide-react"; // Adjust the import path if necessary
 
 export default async function BookPage({params}: {params: {id: string}}) {
   const docRef = doc(db, "books", decodeURIComponent(params.id));
