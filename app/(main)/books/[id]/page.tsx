@@ -45,24 +45,6 @@ export default async function BookPage({params}: {params: {id: string}}) {
             R$ 00,00
           </div>
 
-          <div className="flex flex-wrap gap-4">
-            <Button className="text-lg px-6 py-4 flex items-center gap-2 bg-black hover:bg-zinc-800">
-              <ShoppingCart className="w-5 h-5" /> Comprar agora
-            </Button>
-            <Button
-              variant="outline"
-              className="text-lg px-6 py-4 flex items-center gap-2"
-            >
-              <Bookmark className="w-5 h-5" /> Adicionar ao carrinho
-            </Button>
-            <Button
-              variant="ghost"
-              className="text-lg px-6 py-4 flex items-center gap-2"
-            >
-              <BookOpen className="w-5 h-5" /> Ler amostra
-            </Button>
-          </div>
-
           <div className="pt-6">
             <p className="text-gray-500 text-base sm:text-lg">
               Publicado pela Editora Alabastro
