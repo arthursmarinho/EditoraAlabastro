@@ -1,11 +1,16 @@
-// app/books/[id]/page.tsx
-
 import {doc, getDoc} from "firebase/firestore";
-import {db} from "@/lib/firebase"; // ajuste o caminho conforme seu projeto
+import {db} from "@/lib/firebase";
 import Image from "next/image";
 import {notFound} from "next/navigation";
 
-export default async function BookPage({params}: {params: {id: string}}) {
+// Define a tipagem correta para os parâmetros da rota
+interface BookPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function BookPage({params}: BookPageProps) {
   const docRef = doc(db, "books", decodeURIComponent(params.id));
   const docSnap = await getDoc(docRef);
 
